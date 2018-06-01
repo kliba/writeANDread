@@ -41,13 +41,6 @@ public class Person {
         return name;
     }
 
-    /**
-     * From Person class calling this method if you would like to modify the name of the person
-     * @param name modified name comes back
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
      * Form Person class provide the information about the
@@ -57,29 +50,15 @@ public class Person {
         return birthday;
     }
 
-    /**
-     * From Person class calling this method if you would like to modify the
-     * @param birthday
-     */
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
 
     /**
-     * Form Person class provide the information about the
-     * @return
+     * Form Person class provide the information about the mother name
+     * @return mother's name
      */
     public String getMothersName() {
         return mothersName;
     }
 
-    /**
-     *
-     * @param mothersName
-     */
-    public void setMothersName(String mothersName) {
-        this.mothersName = mothersName;
-    }
 
     /**
      * Form Person class provide the information about the address
@@ -89,11 +68,4 @@ public class Person {
         return address;
     }
 
-    /**
-     *
-     * @param address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
