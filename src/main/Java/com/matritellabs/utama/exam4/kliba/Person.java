@@ -28,7 +28,7 @@ public class Person {
         this.birthday = birthday;
         this.mothersName = mothersName;
         this.address = address;
-        logger.info("1 person instance created, details: name: " + getName() +
+        logger.info("1 instance of Person class is created, details: name: " + getName() +
         " brth: " + getBirthday() + " momName: " + getMothersName() + " address: "
         + getAddress());
     }

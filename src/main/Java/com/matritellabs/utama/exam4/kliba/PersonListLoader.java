@@ -10,15 +10,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PersonListLoader extends Exception {
 
+
     public static final Logger logger = LoggerFactory.getLogger("PersonListLoader Class ");
 
-    public static List<Person> readPersonsFromFile(String fileURL, PersonFileFormat fileFormat) {
+    public static List<Person> readPersonFromFile(String fileURL, PersonFileFormat fileFormat) {
         List<Person> people = new ArrayList<>();
         Path filePath = Paths.get(fileURL);
 
@@ -47,10 +49,11 @@ public class PersonListLoader extends Exception {
                     semicolonCounter = 0;
 
                     //creates Person instances
+                    //generate parameters of Person() --constructor
 
                     String[] personList = line.split(";");
-                    for(String details : personList){
-                        System.out.println(details);
+                    for (String details : personList) {
+//                        System.out.println(details);
                     }
 
                     tempName = personList[0];
@@ -64,19 +67,43 @@ public class PersonListLoader extends Exception {
                     System.out.println("tempAddress = " + tempAddress);
 
 
-                    List<String> lineList = new ArrayList<>();
-                    for (int i = 0; i < line.length() - 1; i++) {
-                        lineList.add(line.substring(i, i + 1));
+                    String[] dateList = tempBirthday.split("-");
+                    for (String date : dateList) {
+//                        System.out.println("date = " + date);
                     }
+                    int year = Integer.parseInt(dateList[0]);
+                    int month = Integer.parseInt(dateList[1]);
+                    int day = Integer.parseInt(dateList[2]);
+
+                    System.out.println("year = " + year);
+                    System.out.println("month = " + month);
+                    System.out.println("day = " + day);
+
+                    //adding a new Person to the list named: people
+                    //    constr: public Person(String name, Date birthday, String mothersName, String address)
+                    people.add(new Person(tempName, new Date(year, month, day), tempMothersName, tempAddress));
+
+                    //here is possible check the poeple list, toString() should be created somehow
+                    System.out.println("people = " + people);
 
                 }
-            } catch (IOException ioex) {
-                ioex.getMessage();
+            } catch (IOException e) {
+                e.getMessage();
+            }
+
+            return people;
+        } else if (fileFormat == PersonFileFormat.ONE_DATA_PER_LINE) {
+            try (BufferedReader br = new BufferedReader(new FileReader(fileURL))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                e.getMessage();
             }
             return people;
         }
         return people;
     }
-
 
 }
