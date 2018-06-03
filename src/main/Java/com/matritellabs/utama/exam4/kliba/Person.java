@@ -4,8 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Date;
+import java.util.Objects;
 
-public class Person {
+public class Person extends PersonComparator{
 
     private String name;
     private Date birthday;
@@ -68,4 +69,26 @@ public class Person {
         return address;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(getName(), person.getName()) &&
+                Objects.equals(getBirthday(), person.getBirthday()) &&
+                Objects.equals(getMothersName(), person.getMothersName()) &&
+                Objects.equals(getAddress(), person.getAddress());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getName(), getBirthday(), getMothersName(), getAddress());
+    }
+
+    @Override
+    public int compare(Person p1, Person p2) {
+       return super.compare(p1, p2);
+    }
 }

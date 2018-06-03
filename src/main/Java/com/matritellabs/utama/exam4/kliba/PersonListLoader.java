@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -52,14 +54,17 @@ public class PersonListLoader extends Exception {
                     //generate parameters of Person() --constructor
 
                     String[] personList = line.split(";");
-                    for (String details : personList) {
-//                        System.out.println(details);
-                    }
+                    System.out.println("personList.length()1 = " + personList.length);
+ //                   for (String details : personList) {
+ //                       System.out.println("details: " +details);
+ //                   }
 
                     tempName = personList[0];
-                    tempBirthday = personList[1];
-                    tempMothersName = personList[2];
+                   tempBirthday = personList[1];
+        /*             tempMothersName = personList[2];
                     tempAddress = personList[3];
+
+                    //Check the temp variables
                     System.out.println("personList.length = " + personList.length);
                     System.out.println("tempName = " + tempName);
                     System.out.println("tempBirthday = " + tempBirthday);
@@ -71,18 +76,20 @@ public class PersonListLoader extends Exception {
                     for (String date : dateList) {
 //                        System.out.println("date = " + date);
                     }
+
                     int year = Integer.parseInt(dateList[0]);
                     int month = Integer.parseInt(dateList[1]);
                     int day = Integer.parseInt(dateList[2]);
-
+                    LocalDate brthDate = LocalDate.of(year, month, day);
+                    System.out.println("brthDate = " + brthDate);
                     System.out.println("year = " + year);
                     System.out.println("month = " + month);
                     System.out.println("day = " + day);
 
                     //adding a new Person to the list named: people
                     //    constr: public Person(String name, Date birthday, String mothersName, String address)
-                    people.add(new Person(tempName, new Date(year, month, day), tempMothersName, tempAddress));
-
+                    people.add(new Person(tempName, asDate(brthDate), tempMothersName, tempAddress));
+*/
                     //here is possible check the poeple list, toString() should be created somehow
                     System.out.println("people = " + people);
 
@@ -104,6 +111,10 @@ public class PersonListLoader extends Exception {
             return people;
         }
         return people;
+    }
+
+    public static Date asDate(LocalDate localDate) {
+        return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     }
 
 }
