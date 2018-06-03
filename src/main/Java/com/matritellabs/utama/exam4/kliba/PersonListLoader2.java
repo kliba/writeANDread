@@ -47,8 +47,9 @@ public class PersonListLoader2 {
                         + System.lineSeparator();
                 all += line;
                 writer.write(all);
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ex) {
+                logger.error("Path you added: " + fileURL + " is not valid ");
+                ex.getMessage();
             }
         }
     }
@@ -66,7 +67,8 @@ public class PersonListLoader2 {
                         + " with " + PersonFileFormat.ONE_DATA_PER_LINE);
             }
         } catch (IOException ex) {
-            logger.error(ex.getMessage());
+            logger.error("Path you added: " + fileURL + " is not valid ");
+            ex.getMessage();
         }
 
     }

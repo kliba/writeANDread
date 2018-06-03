@@ -3,30 +3,28 @@ package com.matritellabs.utama.exam4.kliba;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static com.matritellabs.utama.exam4.kliba.PersonFileFormat.CSV;
 
 public class Main {
 
     public static void main(String[] args) {
-   //     PersonListLoader2.splitALine("Han Solo;1942-07-13;Marina;Millenium Falcon");
-  //      PersonListLoader2.verifyFileFormat("Han Solo;1942-07-13;Marina;Mille;nium Falcon");
-  //      PersonListLoader2.readPersonFromFile(
-  //              "/home/kliba/dev/lab/exam4Kliba/src/main/docs/ember.csv", PersonFileFormat.CSV);
- //       PersonListLoader2.readPersonFromFile("null", PersonFileFormat.ONE_DATA_PER_LINE);
- //       System.out.println(PersonListLoader2.splitADate("1955-12-11"));
-
-//        System.out.println(PersonListLoader2.readPersonFromFile(
-//                "/home/kliba/dev/lab/exam4Kliba/src/main/docs/ember.csv", PersonFileFormat.CSV));
-
-//        System.out.println(PersonListLoader2.readPersonFromFile(
-//                "/home/kliba/dev/lab/exam4Kliba/src/main/docs/ember.ONE_DATA_PER_LINE"
-//                , PersonFileFormat.ONE_DATA_PER_LINE));
 
 
-/*        try {
+        PersonListLoader2.readPersonFromFile(
+                "/home/kliba/dev/lab/exam4Kliba/src/main/docs/ember.csv", PersonFileFormat.CSV);
+        PersonListLoader2.readPersonFromFile("null", PersonFileFormat.ONE_DATA_PER_LINE);
+
+
+        System.out.println(PersonListLoader2.readPersonFromFile(
+                "/home/kliba/dev/lab/exam4Kliba/src/main/docs/ember.csv", PersonFileFormat.CSV));
+
+        System.out.println(PersonListLoader2.readPersonFromFile(
+                "/home/kliba/dev/lab/exam4Kliba/src/main/docs/ember.ONE_DATA_PER_LINE"
+                , PersonFileFormat.ONE_DATA_PER_LINE));
+
+
+        try {
             Person p1 = new Person("A",
                     new SimpleDateFormat("yyyy-MM-dd").parse("2000-01-02"),
                     "Momy", "homeless");
@@ -39,7 +37,7 @@ public class Main {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-*/
+
         List<Person> testList = new ArrayList<>();
         try {
             testList.add(new Person("Adolf", new SimpleDateFormat("yyyy-MM-dd").parse("2010-12-12"),
@@ -54,11 +52,16 @@ public class Main {
             PersonListLoader2.writePersonsToFile(
                     "/home/kliba/dev/lab/exam4Kliba/src/main/docs/written/csv.txt",
                     PersonFileFormat.CSV, testList);
-/*
+
             PersonListLoader2.writePersonsToFile(
                     "/home/kliba/dev/lab/exam4Kliba/src/main/docs/written/online.txt",
                     PersonFileFormat.ONE_DATA_PER_LINE, testList);
-  */      } catch (ParseException e) {
+
+            PersonListLoader2.writePersonsToFile(
+                    "/home/kliba/dev/lab/exam4Kliba/src/main/docs/written/jajj/miezte/online.teeext",
+                    PersonFileFormat.ONE_DATA_PER_LINE, testList);
+
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
