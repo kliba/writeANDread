@@ -1,0 +1,37 @@
+Keep your code in git!
+Create meaningful javadoc for the code!
+Generate docs at the end and put it under src/main/docs!
+Use package com.matritellabs.utama.exam4.<your_user_name>! Put all the classes in this package!
+Use logging  (Slf4J and logback) in your project! You can use the default configuration(no need to create
+logback.xml)!
+If there is an exception thrown by the method make it known in the signature!
+
+1 Create a class called Person with fields (String name, Date birthday, String mothersName, String address)
+2 Create appropriate constructor that accepts these data in this order!
+3 Create getters for these fields!
+4 Create an Enum called PersonFileFormat containing two values CSV and ONE_DATA_PER_LINE!
+5 Create a class called PersonListLoader!
+6 Implement method public static List<Person> readPersonsFromFile(String fileURL, PersonFileFormat fileFormat)!
+  6a Depending on the second parameter, the method reads from the file in the following way:
+    6a1 CSV: each line contains the data of a person separated by a semicolon (;) in the order as
+        the constructor accepts it!
+        (e.g. Han Solo;1942-07-13;Jaina;Millenium Falcon)
+    6a2 ONE_DATA_PER_LINE: each line contains one of informations about a person in the order as
+        the constructor accepts it!
+        (E.g.
+        Han Solo
+        1942-07-13
+        Jaina
+        Millenium Falcon
+  6b Method should return the list of persons read from the file
+  6c Names cannot contain semicolons(;)!
+  6d Date format is year-month-day (Month and day are zero-padded e.g. 07 for July and 05 for fifth day of
+     the month)
+  6e Throw a java.io.FileNotFoundException if the file cannot be found!
+  6f Throw a java.util.IllegalFormatException if the file format is incorrect! (e.g. more semicolons in
+     a line than expected for CSV)!
+7 Implement equals() and hashCode() for Person!
+8 Create the class PersonComparator implementing Comparator that compares Person objects based on birth date!
+  If it is the same use name to decice, if it is the same use mothers name to decide!
+9 Create method public static void writePersonsToFile(String fileURL, PersonFileFormat fileFormat,
+  List<Person> personList)! The method should write the person list in the format defined in the read method!

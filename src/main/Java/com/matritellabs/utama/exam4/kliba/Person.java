@@ -12,7 +12,7 @@ public class Person extends PersonComparator{
     private Date birthday;
     private String mothersName;
     private String address;
-    public static final Logger logger = LoggerFactory.getLogger("Person Class ");
+    private static final Logger logger = LoggerFactory.getLogger("Person Class ");
 
 
 
@@ -42,7 +42,6 @@ public class Person extends PersonComparator{
         return name;
     }
 
-
     /**
      * Form Person class provide the information about the
      * @return birth day of the person
@@ -50,7 +49,6 @@ public class Person extends PersonComparator{
     public Date getBirthday() {
         return birthday;
     }
-
 
     /**
      * Form Person class provide the information about the mother name
@@ -60,7 +58,6 @@ public class Person extends PersonComparator{
         return mothersName;
     }
 
-
     /**
      * Form Person class provide the information about the address
      * @return current address of the relevant person
@@ -68,7 +65,6 @@ public class Person extends PersonComparator{
     public String getAddress() {
         return address;
     }
-
 
     @Override
     public boolean equals(Object o) {

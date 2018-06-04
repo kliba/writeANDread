@@ -19,9 +19,15 @@ import java.util.StringTokenizer;
 
 public class PersonListLoader2 {
 
-    public static final Logger logger = LoggerFactory.getLogger("PersonListLoader Class ");
+    private static final Logger logger = LoggerFactory.getLogger("PersonListLoader Class ");
 
 
+    /**
+     * calling relevant file format (ONE_DATA_PER_LINE or CSV) and revoking the relevant method.
+     * @param fileURL file what should be written
+     * @param fileFormat format how it should be written to a file
+     * @param personList list of person whom data should be written
+     */
     public static void writePersonsToFile(String fileURL, PersonFileFormat fileFormat, List<Person> personList) {
         switch (fileFormat) {
             case CSV:
@@ -36,6 +42,12 @@ public class PersonListLoader2 {
         }
     }
 
+    /**
+     * If the file format is CSV it writes evey fields value on a different lines
+     * into a file
+     * @param fileURL file path where the ONE_DATA_PER_LINE is located
+     * @param personList list what should be written to a File
+     */
     private static void writeCSVtoFile(String fileURL, List<Person> personList) {
         Path path = Paths.get(fileURL);
         String line = "";
@@ -54,6 +66,12 @@ public class PersonListLoader2 {
         }
     }
 
+    /**
+     * If the file format is ONE_DATA_PER_LINE it writes evey fields value on a different lines
+     * into a file
+     * @param fileURL file path where the ONE_DATA_PER_LINE is located
+     * @param personList list what should be written to a File
+     */
     private static void writeONE_DATA_PER_LINEToFile(String fileURL, List<Person> personList) {
         Path path = Paths.get(fileURL);
 
